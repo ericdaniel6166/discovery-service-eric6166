@@ -1,0 +1,59 @@
+app:
+  application-name: discovery # change
+  hostname: localhost # change
+  server-port: 8761 # change
+
+spring:
+  application:
+    name: ${app.application-name}-service
+
+server:
+  port: ${app.server-port}
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${app.hostname}:${app.server-port}/eureka
+  instance:
+    hostname: ${app.hostname}}
+  server:
+    expected-client-renewal-interval-seconds: 5
+    use-read-only-response-cache: false
+
+#management:
+#  tracing:
+#    enabled: true
+#    propagation:
+#      type: b3
+#    sampling:
+#      probability: 1.0
+#  health:
+#    circuitbreakers:
+#      enabled: true
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+#  endpoint:
+#    health:
+#      show-details: always
+#  zipkin:
+#    tracing:
+#      endpoint: http://${app.zipkin-hostname}:${app.zipkin-server-port}/${app.zipkin-context-path}
+
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  health:
+    diskspace:
+      enabled: true
+    db:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
