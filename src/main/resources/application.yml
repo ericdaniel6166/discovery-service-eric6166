@@ -22,6 +22,12 @@ eureka:
     expected-client-renewal-interval-seconds: 5
     use-read-only-response-cache: false
 
+logging:
+  level:
+    root: INFO
+  pattern:
+    level: "%5p[${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+
 #management:
 #  tracing:
 #    enabled: true
