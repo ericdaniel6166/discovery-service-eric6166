@@ -2,6 +2,9 @@ app:
   application-name: discovery # change
   hostname: localhost # change
   server-port: 8761 # change
+  zipkin-hostname: localhost
+  zipkin-server-port: 9411
+  zipkin-context-path: api/v2/spans
 
 spring:
   application:
@@ -51,6 +54,12 @@ logging:
 
 
 management:
+#  tracing:
+#    enabled: true
+#    propagation:
+#      type: b3
+#    sampling:
+#      probability: 1.0
   endpoint:
     health:
       show-details: always
@@ -63,3 +72,6 @@ management:
     web:
       exposure:
         include: "*"
+#  zipkin:
+#    tracing:
+#      endpoint: http://${app.zipkin-hostname}:${app.zipkin-server-port}/${app.zipkin-context-path}
