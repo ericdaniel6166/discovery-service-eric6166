@@ -10,6 +10,8 @@ app:
 spring:
   application:
     name: ${app.application-name}-service
+  profiles:
+    active: local
 
 server:
   port: ${app.server-port}
