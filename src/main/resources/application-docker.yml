@@ -1,6 +1,7 @@
 app:
   hostname: discovery-service
-  zipkin-hostname: zipkin
+  zipkin:
+    hostname: zipkin
 
 #spring:
 #  profiles:
